@@ -8,8 +8,7 @@ def solve_part_one():
     count = 0
     instructions = parse_input("day1.txt")
     for instruction in instructions:
-        direction = instruction[0]
-        movement = int(instruction[1:])
+        direction, movement = instruction[0], int(instruction[1:])
         current_position = (current_position + movement) % 100 if direction == 'R' else (current_position - movement) % 100
         if(current_position == 0):
             count += 1
@@ -21,8 +20,7 @@ def solve_part_two():
     count = 0
     instructions = parse_input("day1.txt")
     for instruction in instructions:
-        direction = instruction[0]
-        movement = int(instruction[1:])
+        direction, movement = instruction[0], int(instruction[1:])
         for i in range(0, movement):
             current_position = (current_position + 1) % 100 if direction == 'R' else (current_position - 1) % 100
             if(current_position == 0):
