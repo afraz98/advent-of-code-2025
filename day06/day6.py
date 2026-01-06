@@ -1,6 +1,6 @@
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
 def solve_part_one():
@@ -23,14 +23,13 @@ def solve_part_one():
     print(total)
     pass
 
-
-def parse_input_part_two(filename):
+def parse_input_part_two(filename : str) -> list[str]:
     rows = [line.strip('\n') for line in open(filename, 'r')]
     cols = zip(*rows)
     problems = [''.join(x) for x in list(cols)]
     return split_list(problems, " "*5)
 
-def split_list(lst : list, separator: str):
+def split_list(lst : list, separator : str) -> list[str]:
     split_lst = []
     sub_list = []
     for i in range(0, len(lst)):

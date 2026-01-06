@@ -1,15 +1,15 @@
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
-def _check_repeated_sequence(id : int):
+def _check_repeated_sequence(id : int) -> bool:
     for j in list(reversed(range(0, len(str(id))))):
         if str(id)[:j] == str(id)[j:]:
             return True
     return False
 
-def check_repeated_sequence(id_range):
+def check_repeated_sequence(id_range : list[int]) -> int:
     """
     Check if a range of numbers contains any number that contains a repeated sequence of digits.
     """
@@ -32,24 +32,20 @@ def solve_part_one():
     print(acc)
     pass
 
-def chunk(string, length):
+def chunk(string : str, length : int) -> str:
     return [string[i : (length+i)] for i in range(0, len(string), length)]
 
-def check_non_repeating_sequence(id : int):
+def check_non_repeating_sequence(id : int) -> bool:
     for i in range(1, len(str(id))):
         chunks = chunk(str(id), i)
         if chunks.count(chunks[0]) == len(chunks):
             return True
     return False
 
-def check_repeating_sequence(id_range):
+def check_repeating_sequence(id_range : list[str]) -> int:
     """
-    Check if a range of numbers contains any number that is entirely composed of repeated sequenc(es) or digit(s.
-    
-    IDEA: Split string into N equal parts, make sure all parts are equal for some value of N
-    
-    Args:
-        id_range (list(str)): IDs as list of strings, e.g. ["11", "22"]
+    Check if a range of numbers contains any number that is entirely composed of repeated sequenc(es) or digit(s).
+    Split string into N equal parts, make sure all parts are equal for some value of N
     """
     acc = 0
     low, high = int(id_range[0]), int(id_range[1])

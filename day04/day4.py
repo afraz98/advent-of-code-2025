@@ -1,9 +1,9 @@
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
-def _check_access(row, col, grid):
+def _check_access(row : int, col : int, grid : list[str]) -> int:
     if row > len(grid)-1 or row < 0:
         return 0
     if col > len(grid[0])-1 or col < 0:
@@ -12,7 +12,7 @@ def _check_access(row, col, grid):
         return 0
     return 1
 
-def check_access(row, col, grid):
+def check_access(row : int, col : int, grid : list[str]) -> int:
     if(grid[row][col] == "."):
         return 5
     return _check_access(row+1, col, grid) + _check_access(row-1, col, grid) + \

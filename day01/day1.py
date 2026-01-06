@@ -1,6 +1,6 @@
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
 def solve_part_one():

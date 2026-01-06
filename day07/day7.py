@@ -1,7 +1,7 @@
 from functools import lru_cache # Cheats enabled
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
 grid = [list(line) for line in parse_input("day7.txt")]
@@ -9,7 +9,7 @@ grid = [list(line) for line in parse_input("day7.txt")]
 # Maintain list of visited nodes for part one
 visited = [[False for _ in lst] for lst in grid]
 
-def traverse_path_part_one(grid, row, col):
+def traverse_path_part_one(grid : list[int], row : int, col : int):
     if row >= len(grid):
         return 0
     if col >= len(grid[0]) or col < 0:
@@ -33,7 +33,7 @@ def solve_part_one():
     pass
 
 @lru_cache
-def traverse_path_part_two(row, col):
+def traverse_path_part_two(row : int, col : int):
     if row == len(grid)-1:
         return 1
     if col >= len(grid[0]) or col < 0:

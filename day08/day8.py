@@ -1,10 +1,10 @@
 import math
 import timeit
 
-def parse_input(filename) -> list[str]:
+def parse_input(filename : str) -> list[str]:
     return [tuple(map(int, line.strip('\n').split(','))) for line in open(filename, 'r')]
 
-def connect(circuits : list[set], point1, point2) -> None:
+def connect(circuits : list[set], point1 : int, point2 : int) -> None:
     set1 = set2 = None
     for s in circuits:
         if point1 in s:

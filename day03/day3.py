@@ -1,9 +1,9 @@
 import timeit
 
-def parse_input(filename):
+def parse_input(filename : str) -> list[str]:
     return [line.strip('\n') for line in open(filename, 'r')]
 
-def calculate_joltage_part_one(joltages : str):
+def calculate_joltage_part_one(joltages : str) -> int:
     max_joltage = 0
     for i in range(0, len(joltages)):
         for j in range(i+1, len(joltages)):
@@ -26,7 +26,7 @@ def solve_part_one():
     print(sum([calculate_joltage_part_one(line) for line in parse_input("day3.txt")]))
     pass
 
-def calculate_joltage_part_two(joltages : list, sequence_length : int):
+def calculate_joltage_part_two(joltages : list, sequence_length : int) -> int:
     rating = 0
     for i in reversed(range(1, sequence_length)):
         local_max = max(joltages[:-i])
