@@ -31,8 +31,16 @@ def point_in_polygon(polygon_vertices : list[int], x : int, y : int):
     return (c % 2 == 0)
 
 def calculate_rectangle_area_part_two(x1 : int, x2 : int, y1 : int, y2 : int, vertices : list[int]):
-    if point_in_polygon(vertices, x1, y1) and point_in_polygon(vertices, x2, y2):
-        return (abs(y2 - y1) + 1) * (abs(x2 - x1) + 1)
+    c = False
+
+    top_x = max(x1, x2)
+    top_y = max(y1, y2)
+
+    bot_x = min(x1, x2)
+    bot_y = min(y1, y2)
+
+    if point_in_polygon(vertices, bot_x, bot_y) and point_in_polygon(vertices, bot_x, top_y) and point_in_polygon(vertices, top_x, bot_y) and point_in_polygon(vertices, top_x, top_y):
+        return (abs(y2 - y1) + 1) * (abs(x2 - x1) + 1) 
     return -1
 
 def solve_part_two():
